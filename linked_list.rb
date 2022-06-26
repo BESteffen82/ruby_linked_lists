@@ -119,7 +119,7 @@ class LinkedList
 		end
 	end
 
-	def insert_at(value, index)		
+	def insert_at(value, index)				
 		current_node = @head
 		node_index = 0		
 		until current_node.next_node == nil
@@ -130,6 +130,19 @@ class LinkedList
 				current_node.next_node = inserted_node																
 			end
 			node_index += 1
+		end
+	end
+
+	def remove_at(index)
+		current_node = @head
+		node_index = 0		
+		until current_node.next_node == nil
+			node_index += 1
+			current_node = current_node.next_node						
+			if node_index == index - 1	
+				removed_node = current_node.next_node
+				current_node.next_node = removed_node.next_node											
+			end										
 		end
 	end
 end
@@ -155,5 +168,8 @@ p linked_list.find("Bella")
 linked_list.insert_at("Taffy", 2)
 p linked_list.to_s
 p linked_list.at(2)
+p linked_list.size
+linked_list.remove_at(4)
+p linked_list.to_s
 p linked_list.size
 
